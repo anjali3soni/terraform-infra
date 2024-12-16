@@ -1,4 +1,3 @@
-## This file is used to create a bastion server in the public subnet of the VPC
 resource "aws_instance" "bastion" {
   ami                    = local.env.bastion_ami
   instance_type          = local.env.bastion_instance_type
@@ -15,7 +14,7 @@ resource "aws_instance" "bastion" {
       Terraform   = "true"
       Environment = "${local.env.environment}-vpc"
       Name        = "${local.env.environment}-bastion"
-      type        = "Bation Server"
+      type        = "bastion"
     }
   }
 
