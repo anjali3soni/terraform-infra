@@ -1,4 +1,3 @@
-# Purpose: Create an S3 bucket to store the Terraform state file
 resource "aws_s3_bucket" "bucket" {
   bucket = local.env.backend_bucket_name
   tags = {
@@ -9,7 +8,6 @@ resource "aws_s3_bucket" "bucket" {
 }
 
 
-# ACL for the bucket
 resource "aws_s3_bucket_public_access_block" "bucket" {
   bucket = aws_s3_bucket.bucket.id
 
@@ -20,7 +18,6 @@ resource "aws_s3_bucket_public_access_block" "bucket" {
   depends_on              = [aws_s3_bucket.bucket]
 }
 
-# Allowing s3 bucket to be public
 resource "aws_s3_bucket_policy" "bucket" {
   bucket = aws_s3_bucket.bucket.id
   policy = jsonencode({
