@@ -1,4 +1,3 @@
-# RDS 
 resource "aws_db_instance" "rds" {
   identifier             = "${local.env.environment}-postgres"
   instance_class         = local.env.rds_type
