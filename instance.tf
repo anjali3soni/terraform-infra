@@ -1,12 +1,9 @@
-# Instance 1
 resource "aws_instance" "instance_1" {
   ami                    = local.env.instance_ami
   instance_type          = local.env.instance_type
   vpc_security_group_ids = [aws_security_group.instance.id]
   key_name               = aws_key_pair.instance.key_name
   subnet_id              = module.vpc.private_subnets[0]
-
-  user_data = file("userdata/userdata.sh")
 
   ebs_block_device {
     device_name           = "/dev/sda1"
@@ -29,15 +26,12 @@ resource "aws_instance" "instance_1" {
   depends_on = [aws_security_group.instance, aws_key_pair.instance]
 }
 
-# Instance 2
 resource "aws_instance" "instance_2" {
   ami                    = local.env.instance_ami
   instance_type          = local.env.instance_type
   vpc_security_group_ids = [aws_security_group.instance.id]
   key_name               = aws_key_pair.instance.key_name
   subnet_id              = module.vpc.private_subnets[1]
-
-  user_data = file("userdata/userdata.sh")
 
   ebs_block_device {
     device_name           = "/dev/sda1"
@@ -60,15 +54,12 @@ resource "aws_instance" "instance_2" {
   depends_on = [aws_security_group.instance, aws_key_pair.instance]
 }
 
-# Instance 3
 resource "aws_instance" "instance_3" {
   ami                    = local.env.instance_ami
   instance_type          = local.env.instance_type
   vpc_security_group_ids = [aws_security_group.instance.id]
   key_name               = aws_key_pair.instance.key_name
   subnet_id              = module.vpc.private_subnets[2]
-
-  user_data = file("userdata/userdata.sh")
 
   ebs_block_device {
     device_name           = "/dev/sda1"
