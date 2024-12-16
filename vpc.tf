@@ -3,7 +3,6 @@ module "vpc" {
 
   name = "${local.env.environment}-vpc"
   cidr = local.env.cidr
-  #cidr = data.aws_secretsmanager_secret.vpc_cidr
 
   azs              = local.env.azs
   private_subnets  = local.env.private_subnets
